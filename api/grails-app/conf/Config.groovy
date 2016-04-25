@@ -11,7 +11,7 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
-grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
+grails.project.groupId = "turns" // change this to alter the default package name and Maven publishing destination
 
 // The ACCEPT header will not be used for content negotiation for user agents containing the following strings (defaults to the 4 major rendering engines)
 grails.mime.disable.accept.header.userAgents = ['Gecko', 'WebKit', 'Presto', 'Trident']
@@ -56,6 +56,36 @@ grails {
         }
         // escapes all not-encoded output at final stage of outputting
         // filteringCodecForContentType.'text/html' = 'html'
+    }
+
+    plugin {
+        springsecurity {
+            rest {
+                oauth {
+
+                    frontendCallbackUrl = { String tokenValue -> "http://my.frontend-app.com/welcome#token=${tokenValue}" }
+
+                    google {
+
+                        client = org.pac4j.oauth.client.Google2Client
+                        key = '944878555699-v6kkiidsul44o4jgt5vba2m4kjhetad1.apps.googleusercontent.com'
+                        secret = 'Am0wjjZayl_IgHt9zoNLvd0D'
+                        scope = org.pac4j.oauth.client.Google2Client.Google2Scope.EMAIL_AND_PROFILE
+                        defaultRoles = ['ROLE_USER', 'ROLE_GOOGLE']
+
+                    }
+                    facebook {
+
+                        client = org.pac4j.oauth.client.FacebookClient
+                        key = '1019878014769366'
+                        secret = 'a22eef387b305fc451f6c0c22ce3babc'
+                        scope = 'email,user_location'
+                        fields = 'id,name,first_name,middle_name,last_name,username,picture'
+                        defaultRoles = ['ROLE_USER', 'ROLE_FACEBOOK']
+                    }
+                }
+            }
+        }
     }
 }
 

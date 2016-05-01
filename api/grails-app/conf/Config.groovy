@@ -41,6 +41,29 @@ grails.views.default.codec = "html"
 // If unspecified, controllers are prototype scoped.
 grails.controllers.defaultScope = 'singleton'
 
+//Default UserDetail
+grails.plugin.springsecurity.controllerAnnotations.security.defaultRole = "ROLE_USER"
+grails.plugin.springsecurity.filterChain.chainMap = [
+        '/api/**': 'JOINED_FILTERS,-exceptionTranslationFilter,-authenticationProcessingFilter,-securityContextPersistenceFilter,-rememberMeAuthenticationFilter',  // Stateless chain
+        '/**'    : 'JOINED_FILTERS,-restTokenValidationFilter,-restExceptionTranslationFilter'                                                                          // Traditional chain
+]
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/'  : ['permitAll'],
+        '/**': ['permitAll'],
+]
+grails.plugin.springsecurity.rest.oauth.frontendCallbackUrl =  { String tokenValue -> "htto://www.clarin.com?#token=${tokenValue}" }
+grails.plugin.springsecurity.rest.oauth.google.client = org.pac4j.oauth.client.Google2Client
+grails.plugin.springsecurity.rest.oauth.google.key = '944878555699-v6kkiidsul44o4jgt5vba2m4kjhetad1.apps.googleusercontent.com'
+grails.plugin.springsecurity.rest.oauth.google.secret = 'Am0wjjZayl_IgHt9zoNLvd0D'
+grails.plugin.springsecurity.rest.oauth.google.scope = org.pac4j.oauth.client.Google2Client.Google2Scope.EMAIL_AND_PROFILE
+grails.plugin.springsecurity.rest.oauth.google.defaultRoles = ['ROLE_USER', 'ROLE_GOOGLE']
+grails.plugin.springsecurity.rest.oauth.facebook.client = org.pac4j.oauth.client.FacebookClient
+grails.plugin.springsecurity.rest.oauth.facebook.key = '1019878014769366'
+grails.plugin.springsecurity.rest.oauth.facebook.secret = 'a22eef387b305fc451f6c0c22ce3babc'
+grails.plugin.springsecurity.rest.oauth.facebook.scope = 'email,user_location'
+grails.plugin.springsecurity.rest.oauth.facebook.fields = 'id,name,first_name,middle_name,last_name,username,picture'
+grails.plugin.springsecurity.rest.oauth.facebook.defaultRoles = ['ROLE_USER', 'ROLE_FACEBOOK']
+
 // GSP settings
 grails {
     views {
@@ -58,35 +81,6 @@ grails {
         // filteringCodecForContentType.'text/html' = 'html'
     }
 
-    plugin {
-        springsecurity {
-            rest {
-                oauth {
-
-                    frontendCallbackUrl = { String tokenValue -> "http://my.frontend-app.com/welcome#token=${tokenValue}" }
-
-                    google {
-
-                        client = org.pac4j.oauth.client.Google2Client
-                        key = '944878555699-v6kkiidsul44o4jgt5vba2m4kjhetad1.apps.googleusercontent.com'
-                        secret = 'Am0wjjZayl_IgHt9zoNLvd0D'
-                        scope = org.pac4j.oauth.client.Google2Client.Google2Scope.EMAIL_AND_PROFILE
-                        defaultRoles = ['ROLE_USER', 'ROLE_GOOGLE']
-
-                    }
-                    facebook {
-
-                        client = org.pac4j.oauth.client.FacebookClient
-                        key = '1019878014769366'
-                        secret = 'a22eef387b305fc451f6c0c22ce3babc'
-                        scope = 'email,user_location'
-                        fields = 'id,name,first_name,middle_name,last_name,username,picture'
-                        defaultRoles = ['ROLE_USER', 'ROLE_FACEBOOK']
-                    }
-                }
-            }
-        }
-    }
 }
 
 
@@ -133,6 +127,9 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    debug  'org.springframework.security',
+            "org.pac4j",
+            "grails.plugin.springsecurity"
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts

@@ -142,3 +142,9 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+/********************************************************
+ ************** CORS Plugin Configuration   *************
+ *******************************************************/
+cors.enabled = true
+cors.url.pattern = '/api/*,/i18n/*,/oauth/*'

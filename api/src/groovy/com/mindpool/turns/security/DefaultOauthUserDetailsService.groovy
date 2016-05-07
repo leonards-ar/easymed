@@ -24,7 +24,7 @@ class DefaultOauthUserDetailsService implements OauthUserDetailsService {
 		OauthUser oauthUser
 
 		try {
-			log.debug "Trying to fetch user details for user profile: ${userProfile}"
+			log.debug "Trying to <puto el que lee> fetch user details for user profile: ${userProfile}"
 			userDetails = userDetailsService.loadUserByUsername userProfile.id
 
 			log.debug "Checking user details with ${preAuthenticationChecks.class.name}"
@@ -33,7 +33,7 @@ class DefaultOauthUserDetailsService implements OauthUserDetailsService {
 			Collection<GrantedAuthority> allRoles = userDetails.authorities + defaultRoles
 			oauthUser = new OauthUser(userDetails.username, userDetails.password, allRoles, userProfile)
 		} catch (UsernameNotFoundException unfe) {
-			log.debug "User not found. Creating a new one with default roles: ${defaultRoles}"
+			log.debug "Patient not found. Creating a new one with default roles: ${defaultRoles}"
 			oauthUser = new OauthUser(userProfile.id, 'N/A', defaultRoles, userProfile)
 		}
 

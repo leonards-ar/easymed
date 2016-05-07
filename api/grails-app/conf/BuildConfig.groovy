@@ -54,11 +54,14 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.29'
         // runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
         test "org.grails:grails-datastore-test-support:1.0.2-grails-2.4"
+        compile 'mysql:mysql-connector-java:5.1.29'
+        compile 'joda-time:joda-time:2.0'
     }
 
     plugins {
         // plugins for the build system only
         build ":tomcat:7.0.55.3" // or ":tomcat:8.0.22"
+
 
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
@@ -68,10 +71,12 @@ grails.project.dependency.resolution = {
 		compile ":spring-security-core:2.0-RC4"
 		compile ":spring-security-rest:1.5.3"
 
+
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.10" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
+        runtime ":cors:1.3.0"
 
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"

@@ -4,7 +4,7 @@ function getURI(relativeURL) {
     return host + relativeURL;
 }
 
-angular.module('easyMed', ['ui.bootstrap','ui.utils','ui.router','ngAnimate','blockUI','pascalprecht.translate','app.config']);
+angular.module('easyMed', ['ui.bootstrap','ui.utils','ui.router','ngCookies','ngAnimate','ngStorage','blockUI','pascalprecht.translate','jlareau.pnotify','app.config']);
 
 var messages = null;
 
@@ -88,16 +88,34 @@ function messagesLoaded(){
 }
 }
 
+angular.module('easyMed').factory('lifeCycleHelper', function () {
+    var lifeHelper = {};
+
+    lifeHelper.onMessagesLoaded = onMessagesLoaded;
+    lifeHelper.onSessionLoaded = onSessionLoaded;
+    lifeHelper.onApplicationInitialized = onApplicationInitialized;
+
+    lifeHelper.applicationInitialized = applicationInitialized;
+    lifeHelper.sessionLoaded = sessionLoaded;
+    lifeHelper.messagesLoaded = messagesLoaded;
+
+    return lifeHelper;
+});
 
 angular.module('easyMed').config(function($stateProvider, $urlRouterProvider,configuration) {
 
     host = configuration.host;
+
+    $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html'
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 
 });
 
-angular.module('easyMed').run(function($rootScope, $location, $cookieStore, $http, $localStorage, $q, uiHelper,loginService) {
+angular.module('easyMed').run(function($rootScope, $location, $cookies, $http, $localStorage, $q, uiHelper,loginService) {
 
     $rootScope.safeApply = function(fn) {
         var phase = $rootScope.$$phase;
@@ -111,73 +129,74 @@ angular.module('easyMed').run(function($rootScope, $location, $cookieStore, $htt
     };
 
     function checkLogin() {
-        var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
-        var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
-
-
-        var isAdminPage = $location.path().indexOf('/administration')>=0;
-
-        if(isConfirmPassword){
-          return;
-        }
-
-        loginService.refreshToken().then(function(currentUser){
-          sessionLoaded();
-          var userIsAdmin = currentUser.roles.indexOf("ROLE_ADMIN") >= 0;
-
-          if(!restrictedPage || !userIsAdmin && isAdminPage ){
-            $location.path("/");
-          }
-        }, function(){
-            isSessionLoaded = false;
-            loginService.logout();
-
-            if(!restrictedPage){
-              hideLoading();
-            }
-            else{
-            $location.path("/login");
-            }
-        });
+        // var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
+        // var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
+        //
+        //
+        // var isAdminPage = $location.path().indexOf('/administration')>=0;
+        //
+        // if(isConfirmPassword){
+        //   return;
+        // }
+        //
+        // loginService.refreshToken().then(function(currentUser){
+        //   sessionLoaded();
+        //   var userIsAdmin = currentUser.roles.indexOf("ROLE_ADMIN") >= 0;
+        //
+        //   if(!restrictedPage || !userIsAdmin && isAdminPage ){
+        //     $location.path("/");
+        //   }
+        // }, function(){
+        //     isSessionLoaded = false;
+        //     loginService.logout();
+        //
+        //     if(!restrictedPage){
+        //       hideLoading();
+        //     }
+        //     else{
+        //     $location.path("/login");
+        //     }
+        // });
+        console.log("La concha de tu madre");
     }
 
 
 
-    $rootScope.$on('$locationChangeStart', function(event, next, current) {
-      var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
-      var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
-
-      if(isConfirmPassword){
-        return;
-      }
-
-      if(restrictedPage && !isApplicationInitialized){
-          event.preventDefault();
-          // Keep track of which location the user was about to move to.
-          var targetPath = $location.path();
-          var targetSearch = $location.search();
-          var targetHash = uiHelper.generateUUID().hashCode();
-
-         onApplicationInitialized(function(){
-
-
-           checkLogin();
-           $location
-               .path( targetPath )
-               .search( targetSearch )
-               .hash( targetHash )
-           ;
-         });
-
-           loginService.refreshToken().then(sessionLoaded, function(){
-             $location.path( "/login" ).hash( targetHash );
-           });
-      }
-      else{
-        checkLogin();
-      }
-
-    });
+    // $rootScope.$on('$locationChangeStart', function(event, next, current) {
+    //   var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
+    //   var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
+    //
+    //   if(isConfirmPassword){
+    //     return;
+    //   }
+    //
+    //   if(restrictedPage && !isApplicationInitialized){
+    //       event.preventDefault();
+    //       // Keep track of which location the user was about to move to.
+    //       var targetPath = $location.path();
+    //       var targetSearch = $location.search();
+    //       var targetHash = uiHelper.generateUUID().hashCode();
+    //
+    //      onApplicationInitialized(function(){
+    //
+    //
+    //        checkLogin();
+    //        $location
+    //            .path( targetPath )
+    //            .search( targetSearch )
+    //            .hash( targetHash )
+    //        ;
+    //      });
+    //
+    //        loginService.refreshToken().then(sessionLoaded, function(){
+    //          $location.path( "/login" ).hash( targetHash );
+    //        });
+    //   }
+    //   else{
+    //     checkLogin();
+    //   }
+    //
+    // });
 
     setInterval(checkLogin, 5000);
 

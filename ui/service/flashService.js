@@ -14,7 +14,7 @@ angular.module('easyMed')
     }])
 ;
 
-angular.module('easyMed').factory('flashService', function ($q,$uibModal,notificationService, blockUI,  $timeout) {
+angular.module('easyMed').factory('flashService', function ($q,$modal,notificationService, blockUI,  $timeout) {
 
   function handleError(data)
   {
@@ -87,7 +87,7 @@ angular.module('easyMed').factory('flashService', function ($q,$uibModal,notific
  showConfirm:function(title) {
     var deferred = $q.defer();
 
-    var modalInstance = $uibModal.open({
+    var modalInstance = $modal.open({
         animation: true,
         templateUrl: 'app/shared/ConfirmModal.html',
         controller: 'ConfirmModalCtrl',

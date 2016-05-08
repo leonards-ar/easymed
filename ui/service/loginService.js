@@ -1,4 +1,4 @@
-angular.module('easyMed').factory('loginService',function($q, $http, $cookieStore, $rootScope, enumsService, $timeout, $localStorage, uiHelper) {
+angular.module('easyMed').factory('loginService',function($q, $http, $rootScope, $timeout, $localStorage, uiHelper) {
 
 	function clearAuthenticationData() {
 			$rootScope.globals = {};

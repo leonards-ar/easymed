@@ -1,4 +1,4 @@
-angular.module('easyMed').controller('LoginCtrl',function($scope, uiHelper, $location, loginService, flashService, lifeCycleHelper,$uibModal){
+angular.module('easyMed').controller('LoginCtrl',function($scope, uiHelper, $location, loginService, flashService, lifeCycleHelper,$modal){
   var vm = $scope;
   uiHelper.setTitle("page.login.title");
 

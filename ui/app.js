@@ -110,6 +110,10 @@ angular.module('easyMed').config(function($stateProvider, $urlRouterProvider,con
         url: '/login',
         templateUrl: 'app/login/login.html'
     });
+    $stateProvider.state('register', {
+        url: '/register',
+        templateUrl: 'app/login/register.html'
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 
@@ -132,11 +136,13 @@ angular.module('easyMed').run(function($rootScope, $location, $cookies, $http, $
   console.log("La concha de tu madre");
         var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
         var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
+        var isRegister = $location.path().indexOf('/register') >= 0;
 
 
         var isAdminPage = $location.path().indexOf('/administration')>=0;
 
-        if(isConfirmPassword){
+        if(isConfirmPassword || isRegister){
+          hideLoading();
           return;
         }
 
@@ -166,8 +172,9 @@ angular.module('easyMed').run(function($rootScope, $location, $cookies, $http, $
     $rootScope.$on('$locationChangeStart', function(event, next, current) {
       var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
       var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
+      var isRegister = $location.path().indexOf('/register') >= 0;
 
-      if(isConfirmPassword){
+      if(isConfirmPassword || isRegister){
         return;
       }
 

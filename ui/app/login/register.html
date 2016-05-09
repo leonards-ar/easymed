@@ -6,34 +6,34 @@
       </div>
       <div class="panel-body">
         <div class="row">
-          <form role="form">
+          <form role="form" ng-submit="register()" novalidate>
             <div class="col-lg-6">
               <div class="form-group">
                 <label>{{ 'page.register.dni.label' | translate }}:</label>
                 <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.email.label' |  translate }}</label>
+              <label>{{ 'page.register.email.label' |  translate }}:</label>
               <input type="email" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.password.label' | translate }}</label>
+              <label>{{ 'page.register.password.label' | translate }}:</label>
               <input type="password" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.confirm.label' | translate }}</label>
+              <label>{{ 'page.register.confirm.label' | translate }}:</label>
               <input type="email" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.lastName.label' | translate }}</label>
+              <label>{{ 'page.register.lastName.label' | translate }}:</label>
               <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.firstName.label' | translate }}</label>
+              <label>{{ 'page.register.firstName.label' | translate }}:</label>
               <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.os.label' | translate }}</label>
+              <label>{{ 'page.register.os.label' | translate }}:</label>
               <select class="form-inline" ng-model="filterCondition.os">
                   <option ng-selected="{{operator.value == filterCondition.os}}" ng-repeat="os in osList" value="{{os.id}}">
                 {{os.name}}
@@ -41,55 +41,51 @@
               </select>
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.birth' | translate }}</label>
+              <label>{{ 'page.register.birth' | translate }}:</label>
               <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                <input type="text" class="form-control" datepicker-popup ng-model="dt" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" />
                 <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
               </p>
             </div>
           </div>
             <div class="col-lg-6">
               <div class="form-group">
-                <label>{{ 'page.register.phone' | translate }}</label>
+                <label>{{ 'page.register.phone.label' | translate }}:</label>
                 <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.cellphone' | translate }}</label>
+              <label>{{ 'page.register.cellphone.label' | translate }}:</label>
               <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>{{ 'page.register.gender' | translate }}</label>
-              <label class="radio-inline">
-                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="M" checked=""/>
-                  {{ 'page.register.gener.male' | Translate}}
-              </label>
-              <label class="radio-inline">
-                <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" value="F" checked=""/>
-                  {{ 'page.register.gener.female' | Translate}}
-              </label>
+              <label>{{ 'page.register.nationality.label' | translate}}:</label>
+              <input type="text" class="form-inline">
             </div>
             <div class="form-group">
-              <label>Confirm Password:</label>
+              <label>{{ 'page.register.address.label' | translate}}:</label>
+              <input type="text" class="form-inline">
+            </div>
+            <div class="form-group">
+              <label>{{ 'page.register.postalCode.label' | translate}}:</label>
+              <input type="text" class="form-inline">
+            </div>
+            <div class="form-group">
+              <label>{{ 'page.register.city.label' | translate}}:</label>
+              <input type="text" class="form-inline">
+            </div>
+            <div class="form-group">
+              <label>{{ 'page.register.state.label' | translate}}:</label>
               <input type="email" class="form-inline">
             </div>
             <div class="form-group">
-              <label>Email:</label>
-              <input type="email" class="form-inline">
+              <label>Captcha*:</label>
+
             </div>
-            <div class="form-group">
-              <label>Email:</label>
-              <input type="email" class="form-inline">
-            </div>
-            <div class="form-group">
-              <label>Email:</label>
-              <input type="email" class="form-inline">
-            </div>
-            <div class="form-group">
-              <label>Email:</label>
-              <input type="email" class="form-inline">
-            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" ng-disabled="registerForm.$invalid">Submit</button>
           </div>
           </form>
         </div>

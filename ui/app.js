@@ -3,8 +3,9 @@ var host = "";
 function getURI(relativeURL) {
     return host + relativeURL;
 }
+var siteKey = "";
 
-angular.module('easyMed', ['ui.bootstrap','ui.utils','ui.router','ngCookies','ngAnimate','ngStorage','blockUI','pascalprecht.translate','jlareau.pnotify','app.config']);
+angular.module('easyMed', ['ui.bootstrap','ui.utils','ui.router','ngCookies','ngAnimate','ngStorage','blockUI','pascalprecht.translate','jlareau.pnotify','app.config','noCAPTCHA']);
 
 var messages = null;
 
@@ -105,6 +106,8 @@ angular.module('easyMed').factory('lifeCycleHelper', function () {
 angular.module('easyMed').config(function($stateProvider, $urlRouterProvider,configuration) {
 
     host = configuration.host;
+    siteKey = configuration.captchaSiteKey;
+
 
     $stateProvider.state('login', {
         url: '/login',
@@ -133,7 +136,6 @@ angular.module('easyMed').run(function($rootScope, $location, $cookies, $http, $
     };
 
     function checkLogin() {
-  console.log("La concha de tu madre");
         var restrictedPage = $.inArray($location.path(), ['/login', '/logout']) === -1;
         var isConfirmPassword = $location.path().indexOf('/confirmPassword') >= 0;
         var isRegister = $location.path().indexOf('/register') >= 0;
@@ -230,4 +232,11 @@ angular.module('easyMed').config(['$translateProvider', function($translateProvi
 
       // Tell the module what language to use by default
       $translateProvider.preferredLanguage('es');
+}]);
+
+//Captcha configuration
+angular.module('easyMed').config(['noCAPTCHAProvider', function (noCaptchaProvider) {
+
+    noCaptchaProvider.setSiteKey(siteKey);
+    noCaptchaProvider.setTheme('light');
 }]);

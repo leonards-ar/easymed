@@ -42,12 +42,10 @@
             </div>
             <div class="form-group">
               <label>{{ 'page.register.birth' | translate }}:</label>
-              <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup ng-model="dt" is-open="popup.opened" datepicker-options="dateOptions" close-text="Close" />
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                <input type="text" class="form-inline" datepicker-popup="dd-MM-yyyy" show-button-bar="false" ng-model="dt" is-open="opened" show-weeks="false" datepicker-options="dateOptions" close-text="{{ 'page.register.datepicker.close.label' | translate }}" />
+                <span class="form-inline">
+                  <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
-              </p>
             </div>
           </div>
             <div class="col-lg-6">

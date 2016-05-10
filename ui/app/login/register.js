@@ -10,28 +10,27 @@ angular.module('easyMed').controller('RegisterCtrl',function($scope){
     vm.dt = new Date();
   };
 
-  vm.popup = {
-    opened: false
+
+  vm.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    vm.opened = true;
   };
 
-  vm.open = function() {
-    console.log("La concha de tu madre!!!! Abrite y no de piernas.....");
-    vm.popup.opened = true;
-  };
 
   // Disable weekend selection
-  function disabled(data) {
-    var date = data.date,
-      mode = data.mode;
-    return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+  function disabled(date,mode) {
+    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
   }
 
+  vm.mode = "year";
+
   vm.dateOptions = {
-    dateDisabled: false,
-    formatYear: 'yyyy',
-    maxDate: new Date(),
-    minDate: new Date(1900, 1, 1),
-    startingDay: 1
+    'formatYear': 'yyyy',
+    'maxDate': new Date(),
+    'minDate': new Date(1900, 1, 1),
+    'datepicker-mode':'year'
   };
   vm.captcha=null;
   // vm.today;

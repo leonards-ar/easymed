@@ -8,13 +8,11 @@ import org.joda.time.DateTime
 class Patient {
 
     User user
-    String dni
     String fullname
     DateTime birth
     String phone
     String cell
     String email
-    String gender
     String nationality
     String street
     String city
@@ -22,4 +20,27 @@ class Patient {
     String zipCode
 
     Boolean active
+
+
+    static constraints = {
+        email email:true
+    }
+
+    static mapping = {
+        table 'patient'
+        cache true
+        version false
+        fullname column: 'full_name'
+        user column: 'user_id'
+        birth column: 'birth'
+        phone column: 'phone'
+        cell column: 'cell_phone'
+        email column: 'email'
+        nationality column: 'nationality'
+        street column:'street'
+        zipCode column:'zipcode'
+        city column:'city'
+        state column: 'state'
+    }
+
 }

@@ -18,12 +18,13 @@ hibernate {
 environments {
     development {
         dataSource {
-            driverClassName = "org.h2.Driver"
-            username = "sa"
+            driverClassName = "com.mysql.jdbc.Driver"
+            username = "easymed"
+            password = "java1234"
             logSql = true
-            dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            //url = "jdbc:mysql://localhost:3306/easymed"
-            url="jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:mysql://localhost:3306/easymed"
+            //="jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
     }
     test {

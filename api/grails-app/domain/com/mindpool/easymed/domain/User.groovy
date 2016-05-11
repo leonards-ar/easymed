@@ -7,6 +7,18 @@ class User {
 
     String dni
     String password
-    String email
+
+    static constraints = {
+        dni nullable:false, blank:false, unique:true
+        password nullable:false, blank:false
+    }
+
+    static mapping = {
+        table 'user'
+        cache true
+        version false
+        dni column: 'dni'
+        password column: 'password'
+    }
 
 }

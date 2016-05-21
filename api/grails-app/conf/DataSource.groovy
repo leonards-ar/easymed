@@ -1,9 +1,10 @@
 dataSource {
+    logSql = true
     pooled = true
     jmxExport = true
     driverClassName = "com.mysql.jdbc.Driver"
-    username = "root"
-    password = ""
+    username = "easymed"
+    password = "java1234"
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -22,7 +23,7 @@ environments {
             username = "easymed"
             password = "java1234"
             logSql = true
-            dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+            dbCreate = "validate" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:mysql://localhost:3306/easymed"
             //="jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }

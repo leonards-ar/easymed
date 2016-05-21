@@ -14,7 +14,7 @@ class User {
     }
 
     static mapping = {
-        table 'user'
+        table 'users'
         cache true
         version false
         dni column: 'dni'

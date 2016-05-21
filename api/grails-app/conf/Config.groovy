@@ -49,8 +49,18 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 ]
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/'  : ['permitAll'],
-        '/**': ['permitAll'],
+        '/**': ['permitAll']
+
 ]
+
+grails.plugin.springsecurity.rest.login.active = true
+grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
+grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"
+grails.plugin.springsecurity.rest.login.failureStatusCode = 401
+grails.plugin.springsecurity.rest.login.useJsonCredentials = true
+grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
+grails.plugin.springsecurity.rest.login.usernamePropertyName='dni'
+grails.plugin.springsecurity.rest.login.passwordPropertyName='password'
 grails.plugin.springsecurity.rest.oauth.frontendCallbackUrl =  { String tokenValue -> "htto://www.clarin.com?#token=${tokenValue}" }
 grails.plugin.springsecurity.rest.oauth.google.client = org.pac4j.oauth.client.Google2Client
 grails.plugin.springsecurity.rest.oauth.google.key = '944878555699-v6kkiidsul44o4jgt5vba2m4kjhetad1.apps.googleusercontent.com'

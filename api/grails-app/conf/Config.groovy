@@ -52,7 +52,11 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**': ['permitAll']
 
 ]
-
+grails.plugin.springsecurity.password.algorithm = 'SHA-256'
+grails.plugin.springsecurity.password.hash.iterations = 1
+grails.plugin.springsecurity.userLookup.userDomainClassName="com.mindpool.easymed.domain.User"
+grails.plugin.springsecurity.userLookup.authorityJoinClassName="com.mindpool.easymed.domain.UserRole"
+grails.plugin.springsecurity.authority.className="com.mindpool.easymed.domain.Role"
 grails.plugin.springsecurity.rest.login.active = true
 grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
 grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"

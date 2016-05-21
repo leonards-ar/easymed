@@ -4,9 +4,9 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
+          <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-2.0-RC4/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.11.1/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/grails-app/views" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -77,7 +77,6 @@
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (api-grailsPlugins)">
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-core/3.1.5.RELEASE/grails-datastore-core-3.1.5.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.4/commons-io-2.4.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/bouncycastle/bcprov-jdk15on/1.51/bcprov-jdk15on-1.51.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/net/minidev/json-smart/1.1.1/json-smart-1.1.1.jar!/" />
@@ -86,12 +85,12 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/log4j-over-slf4j/1.7.2/log4j-over-slf4j-1.7.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/xml-security/xmlsec/1.3.0/xmlsec-1.3.0.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/owasp/esapi/esapi/2.0GA/esapi-2.0GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-simple/3.1.5.RELEASE/grails-datastore-simple-3.1.5.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/velocity/velocity/1.5/velocity-1.5.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.1/commons-collections-3.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/ca/juliusdavies/not-yet-commons-ssl/0.3.9/not-yet-commons-ssl-0.3.9.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/santuario/xmlsec/1.4.4/xmlsec-1.4.4.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/1.6.2/joda-time-1.6.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/opensaml/xmltooling/1.3.2-1/xmltooling-1.3.2-1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/opensaml/openws/1.4.2-1/openws-1.4.2-1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/opensaml/opensaml/2.5.1-1/opensaml-2.5.1-1.jar!/" />
@@ -112,8 +111,10 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.2.3.RELEASE/spring-security-core-3.2.3.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/com/bertramlabs/plugins/asset-pipeline-core/2.5.5/asset-pipeline-core-2.5.5.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.17.1-GA/javassist-3.17.1-GA.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-simple/3.1.5.RELEASE/grails-datastore-simple-3.1.5.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/joda-time/joda-time/2.0/joda-time-2.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.29/mysql-connector-java-5.1.29.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm/3.1.5.RELEASE/grails-datastore-gorm-3.1.5.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-core/3.1.5.RELEASE/grails-datastore-core-3.1.5.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/18.0/guava-18.0.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/args4j/args4j/2.0.26/args4j-2.0.26.jar!/" />

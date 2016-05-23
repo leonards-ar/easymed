@@ -2,6 +2,8 @@ package com.mindpool.easymed.domain.api
 
 import com.mindpool.easymed.domain.Patient
 import com.mindpool.easymed.domain.User
+import com.mindpool.easymed.errors.BusinessException
+import com.mindpool.easymed.errors.DomainValidationException
 import grails.converters.JSON
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -22,9 +24,16 @@ class ApiPatientController extends ApiController {
 
         try {
             patientService.savePatient(patient)
+            response.status = HttpServletResponse.SC_CREATED
+            render (patient as JSON)
         } catch(DomainValidationException e){
             response.status = HttpServletResponse.SC_BAD_REQUEST
             render (this.createValidationErrors(e.errors) as JSON)
+        } catch(BusinessException e){
+            render (this.createError(e.message, e.errorCode))
+        } catch (Exception e) {
+            response.status = HttpServletResponse.SC_BAD_REQUEST
+            render (this.invalidPayload() as JSON)
         }
 
         render (Patient.list() as JSON)

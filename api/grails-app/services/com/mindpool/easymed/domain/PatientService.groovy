@@ -1,7 +1,7 @@
 package com.mindpool.easymed.domain
 
 import com.mindpool.easymed.errors.BusinessException
-import com.mindpool.easymed.errors.ErrorCode
+import com.mindpool.easymed.errors.DomainValidationException
 import com.mindpool.easymed.errors.ErrorCodes
 import grails.transaction.Transactional
 
@@ -18,11 +18,16 @@ class PatientService {
             if(user.enabled){
                 throw new BusinessException("user.disabled", ErrorCodes.USER_IS_DISABLED)
             } else {
-
+                throw new BusinessException("user.exists", ErrorCodes.DUPLICATED_USER)
             }
-
-            user.save(failOnError: true, flush: true)
         }
+
+        if(!user.validate()){
+            new DomainValidationException(user.errors)
+        }
+        user.save(failOnError: true, flush: true)
+
+        return user
 
     }
 }

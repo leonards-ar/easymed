@@ -3,3 +3,4 @@ target
 .idea
 .asscache
 api/web-app/i18n
+*.iml

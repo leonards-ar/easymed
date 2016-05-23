@@ -60,6 +60,7 @@ grails.plugin.springsecurity.authority.className="com.mindpool.easymed.domain.Ro
 grails.plugin.springsecurity.rest.login.active = true
 grails.plugin.springsecurity.rest.login.endpointUrl = "/api/login"
 grails.plugin.springsecurity.rest.logout.endpointUrl = "/api/logout"
+grails.plugin.springsecurity.dao.hideUserNotFoundExceptions = false
 grails.plugin.springsecurity.rest.login.failureStatusCode = 401
 grails.plugin.springsecurity.rest.login.useJsonCredentials = true
 grails.plugin.springsecurity.rest.token.validation.enableAnonymousAccess = true
@@ -77,7 +78,11 @@ grails.plugin.springsecurity.rest.oauth.facebook.secret = 'a22eef387b305fc451f6c
 grails.plugin.springsecurity.rest.oauth.facebook.scope = 'email,user_location'
 grails.plugin.springsecurity.rest.oauth.facebook.fields = 'id,name,first_name,middle_name,last_name,username,picture'
 grails.plugin.springsecurity.rest.oauth.facebook.defaultRoles = ['ROLE_USER', 'ROLE_FACEBOOK']
-
+grails.plugin.springsecurity.useSecurityEventListener = true
+grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = {
+    e, appCtx ->
+        System.out.println("!!!!!!!!!!!!!!!!!!!" + e.getCause())
+}
 // GSP settings
 grails {
     views {

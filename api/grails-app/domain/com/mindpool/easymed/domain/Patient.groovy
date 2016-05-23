@@ -19,8 +19,6 @@ class Patient {
     String state
     String zipCode
 
-    Boolean active
-
 
     static constraints = {
         email email:true

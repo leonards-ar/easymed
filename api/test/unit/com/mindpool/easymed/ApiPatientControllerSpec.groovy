@@ -1,6 +1,6 @@
 package com.mindpool.easymed
 
-import com.mindpool.easymed.domain.ApiPatientController
+import com.mindpool.easymed.domain.api.ApiPatientController
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

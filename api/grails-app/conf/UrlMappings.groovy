@@ -5,7 +5,10 @@ class UrlMappings {
     static mappings = {
         group("/api") {
             "/patient" (controller: "apiPatient", parseRequest: false) {
-                action = [GET: "list"]
+                action = [GET: "list", POST: "create"]
+            }
+            "/activate/${token}" (controller: "apiPatient", parseRequest: false) {
+                action = [GET: "activate"]
             }
         }
 

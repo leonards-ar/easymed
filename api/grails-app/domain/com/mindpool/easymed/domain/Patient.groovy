@@ -7,9 +7,9 @@ import org.joda.time.DateTime
  */
 class Patient {
 
-    User user
+    static belongsTo = [user:User]
     String fullname
-    DateTime birth
+    Date birth
     String phone
     String cell
     String email

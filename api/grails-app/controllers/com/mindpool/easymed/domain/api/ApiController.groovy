@@ -1,8 +1,7 @@
 package com.mindpool.easymed.domain.api
 
 import com.mindpool.easymed.domain.BaseController
-
-com.mindpool.
+import com.mindpool.easymed.errors.ErrorCodes
 import grails.util.GrailsNameUtils
 import grails.validation.ValidationErrors
 import org.joda.time.DateTime
@@ -15,7 +14,7 @@ import java.text.SimpleDateFormat
  */
 abstract class ApiController extends BaseController {
 
-    protected dateFormatter = new SimpleDateFormat("MM/dd/YYYY")
+    protected dateFormatter = new SimpleDateFormat("dd/MM/YYYY")
 
     protected def createError(String errorCode, Integer code) {
         return [message:message(code: errorCode) , code: code]

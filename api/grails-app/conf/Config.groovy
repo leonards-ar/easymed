@@ -162,6 +162,32 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
+grails.cache.config = {
+    cache {
+        name 'user'
+        eternal false
+        timeToLiveSeconds 7200
+        overflowToDisk false
+        maxElementsInMemory 1000
+        maxElementsOnDisk
+        memoryStoreEvictionPolicy 'LRU'
+
+    }
+}
+
+grails.mail.host = "mail.mindpool-it.com"
+grails.mail.port = 587
+grails.mail.disabled = false
+grails.mail.username = "labs+mindpool.com.ar"
+grails.mail.password = "java1234"
+grails.mail.props = [
+        "mail.debug":"true",
+        "mail.smtp.auth":"true",
+//        "mail.smtp.socketFactory.port":"587",
+//        "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+        "mail.smtp.socketFactory.fallback":"false"
+]
+
 /********************************************************
  ************** CORS Plugin Configuration   *************
  *******************************************************/

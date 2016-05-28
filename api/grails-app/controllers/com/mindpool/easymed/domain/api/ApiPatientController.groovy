@@ -32,6 +32,7 @@ class ApiPatientController extends ApiController {
             response.status = HttpServletResponse.SC_BAD_REQUEST
             render (this.createValidationErrors(e.errors) as JSON)
         } catch(BusinessException e){
+            response.status = HttpServletResponse.SC_CONFLICT
             render (this.createError(e.message, e.errorCode))
         } catch (Exception e) {
             response.status = HttpServletResponse.SC_BAD_REQUEST

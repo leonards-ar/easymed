@@ -13,7 +13,7 @@
 
 <body>
 <p>Estimado ${fullname}, Se ha registrado como usuario en la web de turnos de
-Debe ingresar en el siguiente link para activar su cuenta: http://localhost:8080/activate/${key}
+Debe ingresar en el siguiente link para activar su cuenta: http://localhost:8080/turns/api/activate/${key}
 
 Muchas Gracias!
 </p>

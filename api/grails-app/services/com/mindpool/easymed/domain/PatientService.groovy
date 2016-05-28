@@ -16,7 +16,7 @@ class PatientService {
         def user = User.findByUsername(patient?.user?.getUsername())
 
         if(user != null){
-            if(user.enabled){
+            if(!user.enabled){
                 throw new BusinessException("user.disabled", ErrorCodes.USER_IS_DISABLED)
             } else {
                 throw new BusinessException("user.exists", ErrorCodes.DUPLICATED_USER)
@@ -46,5 +46,6 @@ class PatientService {
         def user = User.get(id)
         user.enabled = true
         user.save(flush:true)
+        userCacheService.delete(token)
     }
 }

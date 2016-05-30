@@ -81,7 +81,7 @@ grails.plugin.springsecurity.rest.oauth.facebook.defaultRoles = ['ROLE_USER', 'R
 grails.plugin.springsecurity.useSecurityEventListener = true
 grails.plugin.springsecurity.onAbstractAuthenticationFailureEvent = {
     e, appCtx ->
-        System.out.println("!!!!!!!!!!!!!!!!!!!" + e.getCause())
+        System.out.println("!!!!!!!!!!!!!!!!!!!" + e)
 }
 // GSP settings
 grails {

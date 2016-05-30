@@ -5,7 +5,7 @@ function getURI(relativeURL) {
 }
 var siteKey = "";
 
-angular.module('easyMed', ['ui.bootstrap','ui.utils','ui.router','ngCookies','ngAnimate','ngStorage','blockUI','pascalprecht.translate','jlareau.pnotify','app.config','noCAPTCHA']);
+angular.module('easyMed', ['ui.bootstrap','ui.router','ngCookies','ngAnimate','ngStorage','blockUI','pascalprecht.translate','jlareau.pnotify','app.config','noCAPTCHA']);
 
 var messages = null;
 
@@ -42,7 +42,7 @@ function hideLoading(){
   setTimeout(function(){$(".content").fadeIn(750, function(){
     $("#page-loading").fadeOut(750);
    });}, 100);
-   console.log("!!!!!!Hide La concha de tu madre");
+   console.log("!!!!!Cerrate la concha de tu madre");
    var page_loading = $("#page-loading");
    page_loading.hide("fast");
 }
@@ -56,7 +56,6 @@ function applicationInitialized(){
     }
     isApplicationInitialized = true;
 
-    console.log("!!!!!!Hide Loading Carajo!!!!!!!");
     hideLoading();
   }
 
@@ -185,7 +184,7 @@ angular.module('easyMed').run(function($rootScope, $location, $cookies, $http, $
           // Keep track of which location the user was about to move to.
           var targetPath = $location.path();
           var targetSearch = $location.search();
-          var targetHash = uiHelper.generateUUID().hashCode();
+          var targetHash = "h"+ uiHelper.generateUUID().hashCode();
 
          onApplicationInitialized(function(){
 

@@ -112,10 +112,10 @@ angular.module('easyMed').config(function($stateProvider, $urlRouterProvider,con
         url: '/login',
         templateUrl: 'app/login/login.html'
     });
-    $stateProvider.state('register', {
-        url: '/register',
-        templateUrl: 'app/login/register.html'
-    });
+    // $stateProvider.state('register', {
+    //     url: '/register',
+    //     templateUrl: 'app/login/register.html'
+    // });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 

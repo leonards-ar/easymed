@@ -13,6 +13,7 @@ class Patient {
     String phone
     String cell
     String email
+    String insurance
     String nationality
     String street
     String city
@@ -39,6 +40,7 @@ class Patient {
         zipCode column:'zipcode'
         city column:'city'
         state column: 'state'
+        insurance column: 'insurance'
     }
 
 }

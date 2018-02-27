@@ -8,6 +8,7 @@ class Speciality {
     }
 
     static mapping = {
+        version false
         table 'speciality'
         name column: 'name'
     }

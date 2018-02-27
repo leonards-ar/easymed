@@ -11,6 +11,7 @@ class Institution {
     DateTime creationDate
 
     static mapping = {
+        version false
         table 'institution'
         name column: 'name'
         creationDate column: 'creation_date'

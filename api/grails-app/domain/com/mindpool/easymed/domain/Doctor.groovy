@@ -13,4 +13,8 @@ class Doctor {
     DateTime modificationDate
     Speciality speciality
     Institution institution
+
+    static mapping = {
+        version false
+    }
 }

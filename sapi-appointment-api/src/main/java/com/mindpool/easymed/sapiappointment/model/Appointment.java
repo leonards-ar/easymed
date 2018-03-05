@@ -1,24 +1,32 @@
-package com.mindpool.easymed.sapiappointment.domain;
-
-import org.joda.time.DateTime;
+package com.mindpool.easymed.sapiappointment.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name="appointment", schema="easymed")
-public class Appointment implements Serializable {
+public class Appointment extends AbstractAuditable<Appointment> implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private Long patient;
-    private Long doctor;
-    DateTime appointmentDate;
-
     @Column(name="patient", nullable=false)
+    private Long patient;
+
+    @Column(name="doctor", nullable=false)
+    private Long doctor;
+
+    @Column(name="appointment_date", nullable=false)
+    private Date appointmentDate;
+
+
+    public Long getId() {
+        return id;
+    }
+
     public Long getPatient() {
         return patient;
     }
@@ -27,7 +35,6 @@ public class Appointment implements Serializable {
         this.patient = patient;
     }
 
-    @Column(name="doctor", nullable=false)
     public Long getDoctor() {
         return doctor;
     }
@@ -36,12 +43,11 @@ public class Appointment implements Serializable {
         this.doctor = doctor;
     }
 
-    @Column(name="appointment_date", nullable=false)
-    public DateTime getAppointmentDate() {
+    public Date getAppointmentDate() {
         return appointmentDate;
     }
 
-    public void setAppointmentDate(DateTime appointmentDate) {
+    public void setAppointmentDate(Date appointmentDate) {
         this.appointmentDate = appointmentDate;
     }
 

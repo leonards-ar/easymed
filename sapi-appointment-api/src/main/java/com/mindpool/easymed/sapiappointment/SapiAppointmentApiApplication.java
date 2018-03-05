@@ -2,10 +2,10 @@ package com.mindpool.easymed.sapiappointment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-@ComponentScan({"com.mindpool.easymed.sapiappointment.domain","com.mindpool.easymed.sapiappointment.service"})
+@EnableJpaAuditing
 public class SapiAppointmentApiApplication {
 
 	public static void main(String[] args) {
